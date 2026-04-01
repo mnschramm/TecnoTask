@@ -10,7 +10,7 @@ Ambiente Local:
 Na fase de desenvolvimento foi utilizado um ambiente local Laragon em razão da praticidade.
 
 Teste do Docker:
-Para teste, na falta do Docker Desktop, foi utilizado o Killerkoda para simulação da montagem do container e teste da API.
+Para teste, na falta do Docker Desktop, foi utilizado o Killercoda para validar a orquestração dos containers (PHP + MySQL 8) e garantir que o docker-compose.yml e o Dockerfile estivessem prontos para produção.
 
 ##COMO RODAR O PROJETO##
 
