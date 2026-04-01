@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: tecnotask_app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_NAME=tecnofit_ranking
+      - DB_USER=tecno_user
+      - DB_PASS=tecno_pass
+    depends_on:
+      - db
+    networks:
+      - tecno-network
+
+  db:
+    image: mysql:8.0
+    container_name: tecnotask_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: tecnofit_ranking
+      MYSQL_USER: tecno_user
+      MYSQL_PASSWORD: tecno_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - tecno-network
+
+networks:
+  tecno-network:
+    driver: bridge
+
+volumes:
+  db_data:

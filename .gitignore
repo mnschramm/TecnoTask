@@ -1,0 +1,4 @@
+debug.log
+error.log
+*.log
+db_data/
